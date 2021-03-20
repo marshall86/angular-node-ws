@@ -15,7 +15,6 @@ export class AppComponent implements AfterViewInit {
   stocksQuotes$ = this.data.requests$.pipe(
     map((d: { error: any, result: QuoteData[] } ) => {
       this.loading = '';
-      console.log(d);
       return d.result;
     }),
     catchError(error => { throw error }),
@@ -32,7 +31,7 @@ export class AppComponent implements AfterViewInit {
     let i = 0;
     // limiting to 10 number of server request because of Yahoo api limit of 500 calls
     setInterval(() => {
-      if (i < 1) {
+      if (i < 10) {
         this.data.sendRequest("AAPL, GOOG, MSFT, TSLA");
         i++;
       } else {
