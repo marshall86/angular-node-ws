@@ -27,7 +27,6 @@ export class StockCardComponent {
     // if the stock status is true it means we want to update the UI with the fresh data
     // else we use the stored one
     if (value.status) {
-      value.regularMarketPrice = parseFloat(new Date().getTime().toFixed(2));
       this.data = value;
       this.cdr.markForCheck();      
     } else {
