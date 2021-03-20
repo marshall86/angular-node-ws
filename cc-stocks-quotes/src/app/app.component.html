@@ -1,0 +1,27 @@
+<div class="row">
+
+  <div class="col-xs">
+
+    <div class="row">
+      <div class="col">
+        Realtime Stocks Quotes
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" *ngIf="loading">
+        {{loading}}
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm center-xs" *ngFor="let quote of stocksQuotes$ | async">
+        <app-stock-card [quote]="quote"></app-stock-card>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

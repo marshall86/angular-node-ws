@@ -1,0 +1,13 @@
+{
+    "name": "ws-yahoo-finance-quotes",
+    "description": "NodeJs websocket server to retrieve Yahoo finance stocks quotes.",
+    "author": "Antonio Scala",
+    "version": "0.0.1",
+    "dependencies": {
+        "node": "15.10.0",
+        "http": "0.0.1-security",
+        "@types/node": "12.12.2",
+        "websocket": "1.0.33",
+        "unirest": "0.6.0"
+    }
+}

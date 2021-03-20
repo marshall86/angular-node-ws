@@ -1,0 +1,56 @@
+<div [ngClass]="{
+    'up': data.regularMarketPrice > data.regularMarketPreviousClose, 
+    'down': data.regularMarketPrice < data.regularMarketPreviousClose, 
+    'disabled': data.regularMarketPrice === data.regularMarketPreviousClose || !data.status
+  }">
+
+  <div class="col">
+    <div class="row center-xs">
+      <b class="title">{{data.symbol}}</b>
+    </div>
+    <div class="row center-xs">{{data.regularMarketPrice | currency: data.currency:'symbol' }}</div>
+  </div>
+
+  <div class="col">
+    <div class="row center-xs">
+      <b>Daily High Price</b>
+    </div>
+    <div class="row center-xs">
+      {{data.regularMarketDayHigh | currency:data.currency:'symbol' }}
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="row center-xs">
+      <b>Daily Low Price</b>
+    </div>
+    <div class="row center-xs">{{data.regularMarketDayLow | currency:data.currency:'symbol' }}</div>
+  </div>
+
+  <div class="col hide-xs show-md">
+    <div class="row center-xs">
+      <b>52 Week High Price</b>
+    </div>
+    <div class="row center-xs">
+      {{data.fiftyTwoWeekHigh | currency:data.currency:'symbol' }}
+    </div>
+  </div>
+
+  <div class="col hide-xs show-md">
+    <div class="row center-xs">
+      <b>52 Week Low Price</b>
+    </div>
+
+    <div class="row center-xs">
+      {{data.fiftyTwoWeekLow | currency:data.currency:'symbol' }}
+    </div>
+
+    <div class="row center-xs">
+      <label class="switch">
+        <input type="checkbox">
+        <span (click)="toggle()" class="slider round" [ngClass]="data.status ? 'on' : 'off'">{{data.status ? 'ON' : 'OFF'}}</span>
+      </label>
+    </div>
+  </div>
+
+</div>

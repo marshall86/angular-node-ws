@@ -1,0 +1,32 @@
+$blue: #35495e;
+$green: #2ecc71;
+$red: #e74c3c;
+$grey: #ecf0f1;
+$on-bg-color: #34495e;
+$on-color: #1abc9c;
+
+@import '../../switch.scss';
+
+.up {
+  background: $green;
+}
+
+.down {
+  background: $red;
+}
+
+.disabled {
+  background: $grey;
+}
+
+.up,
+.down,
+.disabled {
+  border-radius: 10px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
