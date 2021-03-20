@@ -36,8 +36,6 @@ wsServer.on('request', (request) => {
     const connection = request.accept('api', request.origin);
     console.log((new Date()) + ' Connection accepted.');
 
-    getStocksQuotes('APPLS');
-
     connection.on('message', (message) => {
         getStocksQuotes(message.utf8Data);
     });
@@ -45,7 +43,6 @@ wsServer.on('request', (request) => {
     connection.on('close', (reasonCode, description) => {
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
-
 
     function getStocksQuotes(stocks) {
 
