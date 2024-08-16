@@ -28,5 +28,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Realtime stocks quotes');
   });
-
 });
