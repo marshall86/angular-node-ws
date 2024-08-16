@@ -20,7 +20,7 @@ const wsServer = new WebSocketServer({
     autoAcceptConnections: false
 });
 
-function originIsAllowed(origin) {
+function originIsAllowed(_origin) {
     // put logic here to detect whether the specified origin is allowed.
     return true;
 }
@@ -36,8 +36,6 @@ wsServer.on('request', (request) => {
 
     const connection = request.accept('api', request.origin);
     console.log((new Date()) + ' Connection accepted.');
-
-    // getStocksQuotes('APPLS');
 
     connection.on('message', (message) => {
         getStocksQuotes(message.utf8Data);

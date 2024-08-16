@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, Subject } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { catchError, tap, switchAll, delayWhen, retryWhen } from 'rxjs/operators';
-import { Observable, Subject, timer } from 'rxjs';
+import { catchError, tap, switchAll, retry } from 'rxjs/operators';
+
 import { environment } from 'src/environments/environment';
+
+export const retryVal = 3;
 export const WS_ENDPOINT = environment.ws;
 export const RECONNECT_INTERVAL = 5000;
 
@@ -41,10 +45,7 @@ export class DataService {
 
   private reconnect(observable: Observable<any>): Observable<any> {
     return observable.pipe(
-      retryWhen(errors => errors.pipe(
-        tap(val => console.log('WS Try to reconnect', val)),
-        delayWhen(_ => timer(RECONNECT_INTERVAL))),
-      )
+      retry({ count: retryVal, delay: RECONNECT_INTERVAL })
     );
   }
 

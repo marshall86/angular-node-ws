@@ -1,5 +1,6 @@
-import { CommonModule, CurrencyPipe, NgClass } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+
 import { QuoteData } from 'src/app/interfaces/stock-quote';
 
 @Component({

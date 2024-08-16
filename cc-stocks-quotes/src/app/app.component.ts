@@ -15,9 +15,9 @@ import { StockCardComponent } from './components/stock-card/stock-card.component
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
 
+  interval: any;
   title = 'Realtime stocks quotes';
   loading = 'Loading, please wait...';
-  interval: any;
 
   data = inject(DataService);
   stocksQuotes$ = this.data.requests$.pipe(
@@ -27,7 +27,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }),
     catchError(error => { throw error }),
     tap({
-      error: error => console.log('[stocks] Error:', error),
+      error: (error) => console.log('[stocks] Error:', error),
       complete: () => console.log('[stocks] Connection Closed')
     })
   );
