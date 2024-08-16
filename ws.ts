@@ -3,7 +3,7 @@ const http = require('http');
 const WebSocketServer = require('websocket').server;
 
 const API_BASE_URL = 'apidojo-yahoo-finance-v1.p.rapidapi.com';
-const API_KEY = "dabc3e20acmshe696e989c86b136p13a9a0jsn93a02d3806f8";
+const API_KEY = "";
 
 const server = http.createServer(function (request, response) {
     console.log((new Date()) + ' Received request for ' + request.url);
