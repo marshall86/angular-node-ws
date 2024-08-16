@@ -1,15 +1,18 @@
+import { CommonModule, CurrencyPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { QuoteData } from 'src/app/interfaces/stock-quote';
 
 @Component({
+  standalone: true,
   selector: 'app-stock-card',
   templateUrl: './stock-card.component.html',
   styleUrls: ['./stock-card.component.scss'],
+  imports: [NgClass, CurrencyPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockCardComponent {
 
-  data: any = {};
+  data!: QuoteData;
 
   @Input() set quote(value: QuoteData) {
     // checking if stock data is already stored
@@ -28,7 +31,7 @@ export class StockCardComponent {
     // else we use the stored one
     if (value.status) {
       this.data = value;
-      this.cdr.markForCheck();      
+      this.cdr.markForCheck();
     } else {
       this.data = storedStock;
     }
@@ -38,7 +41,7 @@ export class StockCardComponent {
   constructor(private cdr: ChangeDetectorRef) { }
 
   // this function is used to set the stock status and to save the stock data in the storage
-  // if the status is true we 'reattach' the change detection that would be otherwise 'detach' 
+  // if the status is true we 'reattach' the change detection that would be otherwise 'detach'
   toggle(): void {
     this.data.status = !this.data.status;
     localStorage.setItem(this.data.symbol, JSON.stringify(this.data));
@@ -47,10 +50,10 @@ export class StockCardComponent {
 
     if (this.data.status) {
       this.cdr.reattach();
-      console.log('reattach cdr');
+      // console.log('reattach cdr');
     } else {
       this.cdr.detach();
-      console.log('detach cdr');
+      // console.log('detach cdr');
     }
   }
 

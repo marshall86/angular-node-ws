@@ -19,7 +19,7 @@ export class DataService {
   );
 
   public connect(cfg: { reconnect: boolean } = { reconnect: false }): void {
- 
+
     // we check if the websocket subject is not closed or if it's undefined
     // if undefined or close we then create the real websocket connection
     // the 'reconnect' flag is used to attempt a reconnection to the server in case there's a server side disconnection
@@ -30,11 +30,11 @@ export class DataService {
         tap({
           error: error => console.log(error),
         }),
-        catchError(_ => console.log)
+        catchError(async (_) => console.log)
       );
 
       this.requestSubject$.next(requests);
-      
+
     }
 
   }
@@ -42,7 +42,7 @@ export class DataService {
   private reconnect(observable: Observable<any>): Observable<any> {
     return observable.pipe(
       retryWhen(errors => errors.pipe(
-        tap(val => console.log('WS Try to reconnect', val)), 
+        tap(val => console.log('WS Try to reconnect', val)),
         delayWhen(_ => timer(RECONNECT_INTERVAL))),
       )
     );
@@ -58,9 +58,9 @@ export class DataService {
   sendRequest(msg: any): void {
     if (this.socket$) {
       this.socket$.next(msg);
-   }
+    }
   }
-  
+
   private getNewWebSocket(): WebSocketSubject<any> {
     return webSocket({
       url: WS_ENDPOINT,
@@ -79,5 +79,5 @@ export class DataService {
       },
     });
   }
-    
+
 }
