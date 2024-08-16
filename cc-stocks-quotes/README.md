@@ -1,11 +1,11 @@
 # angular-realtime-stocks-quotes
 
-An Angular project that comunicate with a NodeJs server to show realtime stocks quotes through a Websocket.
+An Angular project that communicate with a NodeJs server to show realtime stocks quotes through a Websocket.
 The Node.js server connect to the Yahoo API to retrieve some stocks quotes (can be easily changed in the app.component.ts of the Angular project)
 
 To use the Yahoo API is important to update API_KEY in the ws.ts file.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.
 
 ## Development server
 
@@ -22,10 +22,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
